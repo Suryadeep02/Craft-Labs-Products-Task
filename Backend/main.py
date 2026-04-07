@@ -4,8 +4,14 @@ from app.api.routes import products
 app = FastAPI(title ="Products API(Craft Labs)")
 app.include_router(products.router, prefix='/api/v1')
 
+from fastapi.middleware.cors import CORSMiddleware
 
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 """
 Add a Unit Test
